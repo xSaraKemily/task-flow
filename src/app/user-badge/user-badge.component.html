@@ -1,0 +1,14 @@
+<div
+  class="flex items-center gap-3 p-4 rounded-xl shadow cursor-pointer bg-primary"
+  [ngClass]="isSelected || isHovered ? 'bg-white/30' : ''"
+  (mouseenter)="isHovered = true"
+  (mouseleave)="isHovered = false"
+>
+  <img
+    [src]="getImagePath(user.avatar)"
+    alt="user avatar"
+    style="border-radius: 50%; width: 50px; height: 50px"
+  />
+
+  <span>{{ user.name }}</span>
+</div>
