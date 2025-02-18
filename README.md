@@ -1,6 +1,6 @@
 # Task Flow (in development)
 
-This is a task manager project developed for my portfolio. It allows users to add, edit, and delete tasks, but it does not have database integration, meaning data is not persisted after reloading the page. The focus was on implementing the logic and user interface.
+This is a task manager project developed for my portfolio, focusing on practicing Angular features. It allows users to add, edit, and delete tasks, with data stored in local storage instead of a database. The main goal was to implement the logic and user interface using Angular's capabilities.
 
 📌 Technologies used: Angular, TailwindCSS, DaisyUI, Typescript, HTML, CSS
 
@@ -10,6 +10,7 @@ This is a task manager project developed for my portfolio. It allows users to ad
 - Add tasks
 - Edit tasks
 - Delete tasks
+- Save tasks on local storage
 
 =======
 
