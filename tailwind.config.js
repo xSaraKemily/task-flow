@@ -20,13 +20,20 @@ module.exports = {
           "success": "#00A63E",
           "success-content": "#ffffff" 
         },
-        corporate: {
-          ...require("daisyui/src/theming/themes")["corporate"],
-          "accent": "#0069A8",
+        myLightTheme: {
+          "primary": "#ffffff",
+          "primary-content": "#404853",
+          "secondary": "#e4e5e7",
+          "secondary-content": "#374151",
+          "accent": "#675CF0",
+          "accent-content": "#ffffff",
+          "neutral": "#F9FAFB",
+          "base-100": "#F3F4F6",
+          "success": "#16A34A",
+          "success-content": "#ffffff"
         },
       },
       "dark",
-      "corporate"
     ], 
   },
   plugins: [require('daisyui')],
