@@ -1,10 +1,9 @@
 import { Component, inject, Input, input, ViewChild, viewChild } from '@angular/core';
 import { UserInterface } from '../../resources/user/user.model';
 import { TaskComponent } from '../task/task.component';
-import { DUMMY_TASKS } from '../../resources/tasks/dummy-tasks';
-import { TaskInterFace } from '../../resources/tasks/task.model';
+import { type TaskInterFace } from '../../resources/tasks/task.model';
 import { CreateTaskDialogComponent } from '../../create-task-dialog/create-task-dialog/create-task-dialog.component';
-import { getCurrentTheme } from '../../helpers/theme.helper';
+import { TasksService } from '../tasks.service';
 
 @Component({
   selector: 'app-tasks-list',
@@ -12,20 +11,17 @@ import { getCurrentTheme } from '../../helpers/theme.helper';
   templateUrl: './tasks-list.component.html',
 })
 export class TasksListComponent {
+  @ViewChild(CreateTaskDialogComponent) public createTaskDialogComponent!: CreateTaskDialogComponent;
+
   @Input({required: true}) public selectedUser!: UserInterface;
 
-  public tasks: TaskInterFace[] = DUMMY_TASKS;
-  public show!: boolean;
+  public constructor(public tasksService: TasksService) {}
 
   public get selectedUserTasks(): TaskInterFace[] {
-    return this.tasks.filter((task) => task.user_id === this.selectedUser.id);
+    return this.tasksService.getUserTasks(this.selectedUser.id);
   }
 
-  public deleteTask(id: number): void {
-    this.tasks = this.tasks.filter(task => task.id != id);
-  }
-
-  public openCreatioonDialog(): void {
-    getCurrentTheme();
+  public openCreationDialog(): void {
+    this.createTaskDialogComponent.openModal(this.selectedUser.id);
   }
 }
