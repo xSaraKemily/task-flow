@@ -1,6 +1,6 @@
 <div
   class="flex items-center gap-3 p-4 rounded-xl shadow cursor-pointer bg-primary"
-  [ngClass]="isSelected || isHovered ? 'bg-white/30' : ''"
+  [ngClass]="isSelected || isHovered ? 'bg-primary-content/30' : ''"
   (mouseenter)="isHovered = true"
   (mouseleave)="isHovered = false"
 >
@@ -10,5 +10,5 @@
     style="border-radius: 50%; width: 50px; height: 50px"
   />
 
-  <span>{{ user.name }}</span>
+  <span class="text-primary-content">{{ user.name }}</span>
 </div>
