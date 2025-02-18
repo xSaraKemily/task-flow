@@ -1,7 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormsModule, NgForm, NgModel } from '@angular/forms';
 import { TasksService } from '../../tasks/tasks.service';
-import { InputLabelComponent } from '../../ui/input-label/input-label/input-label.component';
+import { InputLabelComponent } from '../../ui/input-label/input-label.component';
 import { CommonModule } from '@angular/common';
 
 @Component({
