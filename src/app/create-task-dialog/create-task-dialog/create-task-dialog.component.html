@@ -1,33 +1,43 @@
   <dialog #modal class="modal">
     <div class="modal-box w-6/12 max-w-5xl bg-secondary text-primary-content">
       <form #ngForm="ngForm" (ngSubmit)="onSave()">
-        <h3 class="text-lg font-bold mb-5">Create Task</h3>
+        <div class="flex gap-2 mb-3">
+          <img class="h-7 w-7" src="assets/add.svg" alt="Illustration"/>
 
-        <div class="flex flex-col w-full gap-2">
-          <label class="form-control w-full">
-            <app-input-label title="Title" [required]="true"></app-input-label>
-
-            <input class="input input-bordered" [class.input-error]="inputHasError(titleModel)" type="text" #titleModel="ngModel" name="title" required [(ngModel)]="title"/>
-
-            <ng-container *ngTemplateOutlet="validation; context: {ngModel: titleModel}"></ng-container>
-          </label>
-
-          <label class="form-control w-full">
-            <app-input-label title="Summary" [required]="true"></app-input-label>
-
-            <textarea class="textarea textarea-bordered textarea-lg" [class.textarea-error]="inputHasError(summaryModel)" #summaryModel="ngModel" name="summary" required [(ngModel)]="summary"></textarea>
-
-            <ng-container *ngTemplateOutlet="validation; context: {ngModel: summaryModel}"></ng-container>
-          </label>
-
-          <label class="form-control w-full">
-            <app-input-label title="Due Date" [required]="true"></app-input-label>
-
-            <input class="input input-bordered" [class.input-error]="inputHasError(dueDateModel)" type="date" name="dueDate"  #dueDateModel="ngModel" required [(ngModel)]="dueDate"/>
-
-            <ng-container *ngTemplateOutlet="validation; context: {ngModel: dueDateModel}"></ng-container>
-          </label>
+          <h3 class="text-lg font-bold">Create Task</h3>
         </div>
+
+        @if (task) {
+          <div class="flex flex-col w-full gap-2">
+            <label class="form-control w-full">
+              <app-input-label title="Title" [required]="true"></app-input-label>
+  
+              <input class="input input-bordered" [class.input-error]="inputHasError(titleModel)" type="text" 
+                  #titleModel="ngModel" name="title" required [(ngModel)]="task.title"/>
+  
+              <ng-container *ngTemplateOutlet="validation; context: {ngModel: titleModel}"></ng-container>
+            </label>
+  
+            <label class="form-control w-full">
+              <app-input-label title="Summary" [required]="true"></app-input-label>
+  
+              <textarea class="textarea textarea-bordered textarea-lg" [class.textarea-error]="inputHasError(summaryModel)" 
+                  #summaryModel="ngModel" name="summary" required [(ngModel)]="task.summary">
+              </textarea>
+  
+              <ng-container *ngTemplateOutlet="validation; context: {ngModel: summaryModel}"></ng-container>
+            </label>
+  
+            <label class="form-control w-full">
+              <app-input-label title="Due Date" [required]="true"></app-input-label>
+  
+              <input class="input input-bordered" [class.input-error]="inputHasError(dueDateModel)" type="date" name="dueDate"
+                #dueDateModel="ngModel" required [(ngModel)]="task.due_date"/>
+  
+              <ng-container *ngTemplateOutlet="validation; context: {ngModel: dueDateModel}"></ng-container>
+            </label>
+          </div>
+        }
 
         <div class="modal-action flex gap-3">
           <button class="btn w-32" type="button" (click)="closeModal()">Close</button>
