@@ -13,7 +13,7 @@
               <app-input-label title="Title" [required]="true"></app-input-label>
   
               <input class="input input-bordered" [class.input-error]="inputHasError(titleModel)" type="text" 
-                  #titleModel="ngModel" name="title" required [(ngModel)]="task.title"/>
+                  #titleModel="ngModel" name="title" required maxlength="70" [(ngModel)]="task.title"/>
   
               <ng-container *ngTemplateOutlet="validation; context: {ngModel: titleModel}"></ng-container>
             </label>
