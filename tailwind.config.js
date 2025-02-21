@@ -18,7 +18,10 @@ module.exports = {
           "neutral": "#1F2937",
           "base-100": "#111827",
           "success": "#00A63E",
-          "success-content": "#ffffff" 
+          "success-content": "#ffffff",
+          "info": "#155DFC",
+          "info-content": "#ffffff",
+          "warning": "#FFDF20",
         },
         myLightTheme: {
           "primary": "#ffffff",
@@ -30,7 +33,10 @@ module.exports = {
           "neutral": "#F9FAFB",
           "base-100": "#F3F4F6",
           "success": "#16A34A",
-          "success-content": "#ffffff"
+          "success-content": "#ffffff",
+          "info": "#155DFC",
+          "info-content": "#ffffff",
+          "warning": "#FFDF20",
         },
       },
       "dark",
