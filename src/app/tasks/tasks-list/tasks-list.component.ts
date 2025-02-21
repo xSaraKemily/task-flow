@@ -15,13 +15,23 @@ export class TasksListComponent {
 
   @Input({required: true}) public selectedUser!: UserInterface;
 
+  public showCompletedSuccessfullyToast?: boolean;
+
   public constructor(public tasksService: TasksService) {}
 
   public get selectedUserTasks(): TaskInterFace[] {
     return this.tasksService.getUserTasks(this.selectedUser.id);
   }
 
-  public openCreationDialog(): void {
-    this.createTaskDialogComponent.openModal(this.selectedUser.id);
+  public openCreationDialog(task?: TaskInterFace): void {
+    this.createTaskDialogComponent?.openModal(this.selectedUser.id, task);
+  }
+
+  public onCompleteTask(): void {
+    this.showCompletedSuccessfullyToast = true;
+
+    setTimeout(() => {
+      this.showCompletedSuccessfullyToast = false;
+    }, 4000);
   }
 }
