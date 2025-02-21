@@ -1,5 +1,5 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 import { FormsModule, NgForm, NgModel } from '@angular/forms';
 import { TasksService } from '../../tasks/tasks.service';
 import { InputLabelComponent } from '../../ui/input-label/input-label.component';
@@ -19,6 +19,8 @@ enum ModalModeEnum {
 export class CreateTaskDialogComponent {
   @ViewChild('modal') private modal!: ElementRef;
   @ViewChild(NgForm) private form!: NgForm;
+
+  @Output() public onSaveTask: EventEmitter<void> = new EventEmitter();
 
   public constructor(private tasksService: TasksService) {}
 
@@ -53,6 +55,7 @@ export class CreateTaskDialogComponent {
     this.task.user_id = this.selectedUserId;
     this.tasksService.addTask(this.task);
     
+    this.onSaveTask.emit();
     this.closeModal();
   }
 

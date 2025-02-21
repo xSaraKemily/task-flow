@@ -5,6 +5,11 @@ import { type TaskInterFace } from '../../resources/tasks/task.model';
 import { CreateTaskDialogComponent } from '../../create-task-dialog/create-task-dialog/create-task-dialog.component';
 import { TasksService } from '../tasks.service';
 
+enum ToastTextEnum {
+  TASK_COMPLETED = 'TASK_COMPLETED',
+  TASK_CREATED = 'TASK_CREATED'
+}
+
 @Component({
   selector: 'app-tasks-list',
   imports: [TaskComponent, CreateTaskDialogComponent],
@@ -15,7 +20,8 @@ export class TasksListComponent {
 
   @Input({required: true}) public selectedUser!: UserInterface;
 
-  public showCompletedSuccessfullyToast?: boolean;
+  public showSuccessToast?: boolean;
+  public toastText?: string;
 
   public constructor(public tasksService: TasksService) {}
 
@@ -27,11 +33,12 @@ export class TasksListComponent {
     this.createTaskDialogComponent?.openModal(this.selectedUser.id, task);
   }
 
-  public onCompleteTask(): void {
-    this.showCompletedSuccessfullyToast = true;
+  public toggleToast(textType: ToastTextEnum | string): void {
+    this.toastText = textType == ToastTextEnum.TASK_COMPLETED ? 'Task completed successfully!' : 'Task saved successfully!';
+    this.showSuccessToast = true;
 
     setTimeout(() => {
-      this.showCompletedSuccessfullyToast = false;
+      this.showSuccessToast = false;
     }, 4000);
   }
 }

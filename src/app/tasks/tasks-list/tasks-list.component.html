@@ -18,7 +18,7 @@
     <ul class="space-y-4 flex flex-col items-center justify-center w-full">
         @for (task of selectedUserTasks; track task.id) {
             <li class="flex w-full">
-                <app-task class="w-full" [task]="task" (onViewTask)="openCreationDialog($event)" (onCompleteTask)="onCompleteTask()"/>
+                <app-task class="w-full" [task]="task" (onViewTask)="openCreationDialog($event)" (onCompleteTask)="toggleToast('TASK_COMPLETED')"/>
             </li>
         } @empty {
             <img class="h-3/6 w-3/6" src="assets/empty.svg" alt="Illustration"/>
@@ -26,14 +26,14 @@
     </ul>
 </section>
 
- @if (showCompletedSuccessfullyToast) {
+ @if (showSuccessToast) {
     <div class="toast toast-top toast-end z-50">
         <div class="alert alert-success w-60">
-        <span>Task completed successfully!</span>
+        <span>{{ toastText }}</span>
         </div>
     </div>
 }
 
-<app-create-task-dialog></app-create-task-dialog>
+<app-create-task-dialog (onSaveTask)="toggleToast('TASK_CREATED')"></app-create-task-dialog>
 
 
